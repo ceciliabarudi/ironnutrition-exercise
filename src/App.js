@@ -1,25 +1,24 @@
+'Use strict';
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import foods from '../src/data/foods.json';
+import Foodbox from './components/Foodbox';
 
 class App extends Component {
+  state = {
+    foods
+  }
+
   render() {
+    const { foods } = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h2>IronNutrition</h2>
+        {foods.map((food) => {
+          return (
+            <Foodbox data={food} key={food.image} />
+          )
+        })}
       </div>
     );
   }
